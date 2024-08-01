@@ -15,9 +15,9 @@ jobs:
       matrix:
         include:
           - platform: "macos-latest"
-            args: '--target aarch64-apple-darwin'
+            args: 'Apple Silicon'
           - platform: "macos-latest"
-            args: '--target x86_64-apple-darwin'
+            args: 'Intel'
           - platform: 'ubuntu-22.04'
             args: ''
           - platform: 'windows-latest'
@@ -49,9 +49,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          tauriScript: bunx tauri
           tagName: app-v__VERSION__
           releaseName: 'App v__VERSION__'
           releaseBody: 'Release of App v__VERSION__'
           releaseDraft: true
           prerelease: false
-          args: ${{ matrix.args }}
+          args: ${{ matrix.args == 'Apple Silicon' && '--target aarch64-apple-darwin' || matrix.args == 'Intel' && '--target x86_64-apple-darwin' || '' }}
