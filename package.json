@@ -42,6 +42,7 @@
     "@dotenvx/dotenvx": "^1.6.4",
     "@tauri-apps/cli": "2.0.0-beta.23",
     "@types/deep-equal": "^1.0.4",
+    "@types/events": "^3.0.3",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
